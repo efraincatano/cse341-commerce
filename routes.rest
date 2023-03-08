@@ -1,0 +1,36 @@
+### 
+GET http://localhost:3000/users 
+
+### 
+GET http://localhost:3000/users/6408de08a5059f77eeb8d901
+
+### 
+POST http://localhost:3000/users HTTP/1.1 
+content-type: application/json
+
+{
+"name":"Jana",
+"lastname":"Cespedes",
+"email":"jana@mail.com",
+"usertype":"1"
+}
+// Items
+### 
+GET http://localhost:3000/item 
+
+### 
+GET http://localhost:3000/item/6408deb8a5059f77eeb8d904
+
+### 
+POST http://localhost:3000/item HTTP/1.1 
+content-type: application/json
+
+{
+
+"name":"Table",
+"maker":"furniture inc.",
+"model":"WoodT 200",
+"price":"$30",
+"category":"home",
+"description":"beautiful wooden table"
+}

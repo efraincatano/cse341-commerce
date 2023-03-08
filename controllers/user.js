@@ -1,7 +1,13 @@
-// getOneUser createUser item
-
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
+
+const getAllUsers = async (req, res) => {
+    const result = await mongodb.getDb().db("commerce").collection('users').find();
+    result.toArray().then((lists) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
+  };
 
 const getOneUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
@@ -34,6 +40,7 @@ const createUser = async (req, res) => {
 
 
   module.exports = {
+    getAllUsers,
     getOneUser,
     createUser
   };

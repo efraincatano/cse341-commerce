@@ -18,28 +18,19 @@
         "responses": {}
       }
     },
-    "/users/{id}": {
+    "/users/": {
       "get": {
         "description": "",
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/users/": {
+      },
       "post": {
         "description": "",
         "parameters": [
@@ -66,7 +57,7 @@
         }
       }
     },
-    "/item/{id}": {
+    "/users/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -88,6 +79,18 @@
       }
     },
     "/item/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "description": "",
         "parameters": [
@@ -125,6 +128,27 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/item/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

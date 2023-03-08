@@ -1,6 +1,15 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+
+const getAllItems = async (req, res) => {
+    const result = await mongodb.getDb().db("commerce").collection('item').find();
+    result.toArray().then((lists) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
+  };
+
 const getOneItem = async (req, res) => {
     const itemId = new ObjectId(req.params.id);
     const result = await mongodb
@@ -35,5 +44,6 @@ const createItem = async (req, res) => {
 
   module.exports = {
     getOneItem,
-    createItem
+    createItem,
+    getAllItems
   };
