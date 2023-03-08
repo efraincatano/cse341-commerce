@@ -1,0 +1,22 @@
+{
+  "main": "server.js",
+  "engines": {
+    "node": "19.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "swagger": "node ./swagger.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0",
+    "node": "^19.6.1",
+    "swagger-autogen": "^2.23.1",
+    "swagger-ui-express": "^4.6.2"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.1"
+  }
+}
