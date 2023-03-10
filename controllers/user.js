@@ -24,11 +24,11 @@ const getOneUser = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-    const user = {
+    const user={
         name: req.body.name,
-        lastname: req.body.name,
-        email: req.body.name,
-        usertype: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        usertype: req.body.usertype
     }
     const response = await mongodb.getDb().db("commerce").collection('users').insertOne(user);
     if (response.acknowledged) {
@@ -38,9 +38,43 @@ const createUser = async (req, res) => {
     }
   };
 
+const updateUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user = {
+      name: req.body.name,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      usertype: req.body.usertype
+    };
+    const response = await mongodb
+      .getDb()
+      .db("commerce")
+      .collection('users')
+      .replaceOne({ _id: userId }, user);
+    console.log(response);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Failed to update user');
+    }
+  };
+
+const deleteUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db("commerce").collection('user').deleteOne({ _id: userId }, true);
+    console.log(response);
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Failed to delete user');
+    }
+  };
+
 
   module.exports = {
     getAllUsers,
     getOneUser,
-    createUser
+    createUser,
+    updateUser,
+    deleteUser
   };

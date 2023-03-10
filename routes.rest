@@ -2,7 +2,7 @@
 GET http://localhost:3000/users 
 
 ### 
-GET http://localhost:3000/users/6408de08a5059f77eeb8d901
+GET http://localhost:3000/users/640a372910250b161c1dea03
 
 ### 
 POST http://localhost:3000/users HTTP/1.1 
@@ -14,6 +14,21 @@ content-type: application/json
 "email":"jana@mail.com",
 "usertype":"1"
 }
+
+### 
+PUT http://localhost:3000/users/640a372910250b161c1dea03 HTTP/1.1 
+content-type: application/json
+
+{
+"name":"Joaquin",
+"lastname":"Ramirez",
+"email":"joaquin@mail.com",
+"usertype":"2"
+} 
+###
+DELETE http://localhost:3000/users/6408de80a5059f77eeb8d903 HTTP/1.1
+
+
 // Items
 ### 
 GET http://localhost:3000/item 
@@ -26,11 +41,26 @@ POST http://localhost:3000/item HTTP/1.1
 content-type: application/json
 
 {
+    "name":"Table",
+    "maker":"furniture inc.",
+    "model":"WoodT 200",
+    "price":"$30",
+    "category":"home",
+    "description":"beautiful wooden table"
+}
 
+
+### 
+PUT http://localhost:3000/item/6408deb8a5059f77eeb8d904 HTTP/1.1 
+content-type: application/json
+
+{
 "name":"Table",
 "maker":"furniture inc.",
 "model":"WoodT 200",
-"price":"$30",
+"price":"$50",
 "category":"home",
 "description":"beautiful wooden table"
-}
+} 
+###
+DELETE http://localhost:3000/item/640015adee013309532922bd HTTP/1.1

@@ -31,7 +31,7 @@ const createItem = async (req, res) => {
         model: req.body.model,
         price: req.body.price,
         category: req.body.category,
-        description: req.body.description,
+        description: req.body.description
     };
     const response = await mongodb.getDb().db("commerce").collection('item').insertOne(item);
     if (response.acknowledged) {
@@ -41,9 +41,45 @@ const createItem = async (req, res) => {
     }
   };
 
+const updateItem = async (req, res) => {
+    const itemId = new ObjectId(req.params.id);
+    const item = {
+      name: req.body.name,
+      maker: req.body.maker,
+      model: req.body.model,
+      price: req.body.price,
+      category: req.body.category,
+      description: req.body.description
+    };
+    const response = await mongodb
+      .getDb()
+      .db("commerce")
+      .collection('item')
+      .replaceOne({ _id: itemId }, item);
+    console.log(response);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Failed to update item');
+    }
+  };
+
+const deleteItem = async (req, res) => {
+    const itemId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db("commerce").collection('item').deleteOne({ _id: itemId }, true);
+    console.log(response);
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Failed to delete item');
+    }
+  };
+
 
   module.exports = {
     getOneItem,
+    getAllItems,
     createItem,
-    getAllItems
+    updateItem,
+    deleteItem
   };
