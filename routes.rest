@@ -9,10 +9,10 @@ POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-"name":"Jana",
+"name": "Janita",
 "lastname":"Cespedes",
 "email":"jana@mail.com",
-"usertype":"1"
+"usertype": 1
 }
 
 ### 
@@ -41,7 +41,7 @@ POST http://localhost:3000/item HTTP/1.1
 content-type: application/json
 
 {
-    "name":"Table",
+    "name":123,
     "maker":"furniture inc.",
     "model":"WoodT 200",
     "price":"$30",
@@ -55,7 +55,7 @@ PUT http://localhost:3000/item/6408deb8a5059f77eeb8d904 HTTP/1.1
 content-type: application/json
 
 {
-"name":"Table",
+"name":123,
 "maker":"furniture inc.",
 "model":"WoodT 200",
 "price":"$50",
