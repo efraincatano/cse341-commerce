@@ -26,7 +26,7 @@ content-type: application/json
 "usertype":"2"
 } 
 ###
-DELETE http://localhost:3000/users/6408de80a5059f77eeb8d903 HTTP/1.1
+DELETE http://localhost:3000/users/640ced6b16a28b01d3aefc3a HTTP/1.1
 
 
 // Items
