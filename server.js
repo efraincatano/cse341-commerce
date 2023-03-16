@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
+const { auth, requiresAuth } = require('express-openid-connect');
+require('dotenv').config();
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -17,6 +19,10 @@ app
     next();
   })
   .use('/', require('./routes'));
+
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user));
+  });
 
 mongodb.initDb((err) => {
   if (err) {
