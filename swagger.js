@@ -9,6 +9,15 @@ const doc = {
   schemes: ['https']
 };
 
+//const doc = {
+//  info: {
+//    title: 'My API for e-commerce',
+//    description: 'API to add user and items to an online store'
+//  },
+//  host: 'localhost:3000',
+//  schemes: ['http']
+//};
+
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 

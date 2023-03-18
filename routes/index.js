@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { auth } = require('express-openid-connect');
+const { auth, requiresAuth } = require('express-openid-connect');
 const dotenv = require('dotenv');
 dotenv.config();
-
-router.use('/', require('./swagger'));
-router.use('/users', require('./users'))
-router.use('/item', require('./item'))
 
 const config = {
     authRequired: false,
@@ -25,5 +21,8 @@ const config = {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
   });
 
+router.use('/', requiresAuth(), require('./swagger'));
+router.use('/users', requiresAuth(), require('./users'))
+router.use('/item', requiresAuth(), require('./item'))
 
 module.exports = router;
